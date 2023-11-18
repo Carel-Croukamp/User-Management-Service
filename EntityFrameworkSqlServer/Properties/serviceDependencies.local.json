@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets.user"
-    },
     "mssql1": {
       "serviceConnectorResourceId": "",
       "containerPorts": "1433:1433",

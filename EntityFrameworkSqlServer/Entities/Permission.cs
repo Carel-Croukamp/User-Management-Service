@@ -1,10 +1,15 @@
-﻿namespace EntityFrameworkSqlServer.Entities
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace EntityFrameworkSqlServer.Entities
 {
     public class Permission
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string? Description { get; set; }
-        public bool IsActive { get; set; }
+        [Key]
+        public int PermissionId { get; set; }
+        public string PermissionName { get; set; }
+        public List<Group> Groups { get; set; }
+
+        public List<GroupPermission> GroupPermissions { get; set; }
     }
 }

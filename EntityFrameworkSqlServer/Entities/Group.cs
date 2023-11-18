@@ -1,13 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace EntityFrameworkSqlServer.Entities
 {
     public class Group
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string? Description { get; set; }
+        [Key]
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<Permission> Permissions { get; set; }
+
+        [JsonIgnore]
+        public List<Permission> Permissions { get; set; }
+        
+        [JsonIgnore]
+        public List<UserGroups> UserGroups { get; set; }
+        
+        [JsonIgnore]
+        public List<GroupPermission> GroupPermissions { get; set; }
     }
 }
