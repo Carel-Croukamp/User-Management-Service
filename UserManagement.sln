@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User-Management-Web-Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkSqlServer", "EntityFrameworkSqlServer\EntityFrameworkSqlServer.csproj", "{D7636D93-5951-4803-92B0-269EFA66B8AF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagement-Model", "UserManagement-Model\UserManagement-Model.csproj", "{8A988A00-9C6D-4150-97E6-7306049465BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User-Management-Web", "User-Management-Web\User-Management-Web.csproj", "{BC227183-7A13-4CC6-BC56-CF90CD3FB5F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D7636D93-5951-4803-92B0-269EFA66B8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7636D93-5951-4803-92B0-269EFA66B8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7636D93-5951-4803-92B0-269EFA66B8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A988A00-9C6D-4150-97E6-7306049465BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A988A00-9C6D-4150-97E6-7306049465BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A988A00-9C6D-4150-97E6-7306049465BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A988A00-9C6D-4150-97E6-7306049465BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC227183-7A13-4CC6-BC56-CF90CD3FB5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC227183-7A13-4CC6-BC56-CF90CD3FB5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC227183-7A13-4CC6-BC56-CF90CD3FB5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC227183-7A13-4CC6-BC56-CF90CD3FB5F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

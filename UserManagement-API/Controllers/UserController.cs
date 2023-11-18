@@ -123,5 +123,22 @@ namespace EntityFrameworkSqlServer.Controllers
             return Ok(user);
         }
 
+        [HttpGet("getUserCount")]
+        public async Task<ActionResult<int>> GetUserCount()
+        {
+            var userCount = await _usersDbContext.Users.CountAsync();
+
+            return Ok(userCount);
+        }
+
+        [HttpGet("getUserCountPerGroup")]
+        public async Task<ActionResult<int>> GetUserCount(int groupId)
+        {
+            var userCount = await _usersDbContext.UserGroups.CountAsync(ug => ug.GroupId == groupId);
+
+            return Ok(userCount);
+        }
+
+
     }
 }
