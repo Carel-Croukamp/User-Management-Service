@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  user-management-web-api:
+    image: ${DOCKER_REGISTRY-}usermanagementwebapi
+    build:
+      context: .
+      dockerfile: UserManagement-API/Dockerfile
+    depends_on:
+      - sqlserver
+   
+  user-management-web-interface:
+    image: ${DOCKER_REGISTRY-}usermanagementwebinterface
+    build:
+      context: .
+      dockerfile: User-Management-Web/Dockerfile
+    depends_on:
+      - user-management-web-api
+      
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    container_name: mssql
+    environment:
+      SA_PASSWORD: "Password123$"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - /var/opt/mssql/data
+      - /log:/var/opt/mssql/log
+      - /data:/secrets:/var/opt/mssql/secrets

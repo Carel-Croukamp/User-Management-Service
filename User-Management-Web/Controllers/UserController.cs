@@ -5,7 +5,7 @@ using UserManagement_Model;
 using User_Management_Web.Services;
 using System.Diagnostics;
 using User_Management_Web.Models;
-using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace User_Management_Web.Controllers
 {
@@ -13,11 +13,15 @@ namespace User_Management_Web.Controllers
     {
         private readonly UserService _userService;
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IConfiguration _configuration;
+        private readonly string _baseUrl;
 
-        public UserController(UserService userService, IHttpClientFactory httpClientFactory)
+        public UserController(UserService userService, IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             _userService = userService;
             _httpClientFactory = httpClientFactory;
+            _configuration = configuration;
+            _baseUrl = configuration["AppSettings:BaseUrl"] ?? "http://localhost:61066";
         }
         public async Task<IActionResult> Index()
         {
@@ -82,7 +86,7 @@ namespace User_Management_Web.Controllers
             {
 
                 // Adjust the API endpoint URL accordingly
-                var apiUrl = "http://localhost:5186/api/user/getAll";
+                var apiUrl = $"{_baseUrl}/api/user/getAll";
 
                 var response = await httpClient.GetStringAsync(apiUrl);
 
@@ -97,7 +101,7 @@ namespace User_Management_Web.Controllers
         {
             using (var httpClient = _httpClientFactory.CreateClient())
             {
-                var apiUrl = "http://localhost:5186/api/user/create";
+                var apiUrl = $"{_baseUrl}/api/user/create";
 
                 // Convert the User object to JSON
                 var jsonContent = JsonConvert.SerializeObject(user);
@@ -116,7 +120,7 @@ namespace User_Management_Web.Controllers
             using (var httpClient = _httpClientFactory.CreateClient())
             {
                 // Adjust the API endpoint URL accordingly
-                var apiUrl = "http://localhost:5186/api/user/update";
+                var apiUrl = $"{_baseUrl}/api/user/update";
 
                 // Convert the User object to JSON
                 var jsonContent = JsonConvert.SerializeObject(user);
@@ -137,7 +141,7 @@ namespace User_Management_Web.Controllers
             using (var httpClient = _httpClientFactory.CreateClient())
             {
                 // Adjust the API endpoint URL accordingly
-                var apiUrl = "http://localhost:5186/api/user/remove";
+                var apiUrl = $"{_baseUrl}/api/user/remove";
 
                 // Make the HTTP PUT request to update the user
                 var response = await httpClient.DeleteAsync($"{apiUrl}/{userId}");
