@@ -34,10 +34,10 @@ jobs:
 
       # Runs a single command using the runners shell
       #- name: Restore dependencies
-      #  run: dotnet restore UserManagement-Test.csproj
+      #  run: dotnet --restore UserManagement-Test.csproj
 
       - name: Check dotnet environment info
-        run: dotnet info
+        run: dotnet --info
 
       - name: Build
         run: dotnet build UserManagement-Test.csproj --configuration Release
