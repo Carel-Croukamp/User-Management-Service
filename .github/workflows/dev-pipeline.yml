@@ -33,8 +33,8 @@ jobs:
 
 
       # Runs a single command using the runners shell
-      - name: Restore dependencies
-        run: dotnet restore UserManagement-Test.csproj
+      #- name: Restore dependencies
+      #  run: dotnet restore UserManagement-Test.csproj
 
       - name: Check dotnet environment info
         run: dotnet info
