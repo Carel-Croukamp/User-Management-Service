@@ -34,7 +34,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore UserManagement-Test
 
       - name: Check dotnet environment info
         run: dotnet info
