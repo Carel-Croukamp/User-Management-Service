@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using User_Management_Web;
 using User_Management_Web.Services;
+using Microsoft.AspNetCore.DataProtection;
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())
@@ -10,6 +13,14 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
     EnvironmentName = configuration.GetSection("Hosting")["Environment"]
 });
+
+builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(@"C:\temp-keys\"))
+                .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+                {
+                    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
+                    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+                });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
