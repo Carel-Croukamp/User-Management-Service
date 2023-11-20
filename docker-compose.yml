@@ -1,21 +1,37 @@
 version: '3.4'
 
 services:
+
   user-management-web-api:
     image: ${DOCKER_REGISTRY-}usermanagementwebapi
     build:
       context: .
       dockerfile: UserManagement-API/Dockerfile
+    ports:
+        - "61680:80"     
     depends_on:
       - sqlserver
    
   user-management-web-interface:
-    image: ${DOCKER_REGISTRY-}usermanagementwebinterface
+    image: usermanagementwebinterface
     build:
       context: .
       dockerfile: User-Management-Web/Dockerfile
+    ports:
+      - "8104:80"
+    volumes:
+      - /c/temp-keys:/root/.aspnet/DataProtection-Keys
     depends_on:
       - user-management-web-api
+
+  nginx:
+    image: ${DOCKER_REGISTRY-}nginx
+    build:
+        dockerfile: User-Management-Web/Host/Dockerfile
+    ports:
+       - "80:80"
+    depends_on: 
+      - "user-management-web-interface"
       
   sqlserver:
     image: mcr.microsoft.com/mssql/server
@@ -25,7 +41,9 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
-    volumes:
-      - /var/opt/mssql/data
-      - /log:/var/opt/mssql/log
-      - /data:/secrets:/var/opt/mssql/secrets
+
+networks:
+ aspnet-network:
+  driver: bridge 
+
+      

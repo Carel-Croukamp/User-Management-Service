@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User-Management-Web", "User
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{78797684-189C-4C7C-91C7-7A7CEAC1D1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement-Test", "UserManagement-Test\UserManagement-Test.csproj", "{D50F1F97-A00B-4333-92BF-D4BFDE8EA8C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagement-Test", "UserManagement-Test\UserManagement-Test.csproj", "{D50F1F97-A00B-4333-92BF-D4BFDE8EA8C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
